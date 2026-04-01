@@ -132,29 +132,78 @@ body{font-family:'Lato',sans-serif;font-weight:300;color:var(--dark);cursor:none
 /* ══════════════════════════
    PAGE 5 – GREETING CARD
 ══════════════════════════ */
-#p5{flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
-.card-scene{perspective:1200px;cursor:pointer;position:relative;}
-.card-3d{width:min(420px,90vw);position:relative;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.4,0,.2,1);transform:rotateY(0deg);}
-.card-3d.opened{transform:rotateY(-180deg);}
-.card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;overflow:hidden;}
+#p5{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card-scene{
+  perspective: 1200px;
+  cursor: pointer;
+  position: relative;
+  width: min(420px, 90vw);
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-3d{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(.4,0,.2,1);
+  transform: rotateY(0deg);
+}
+
+.card-3d.opened{
+  transform: rotateY(-180deg);
+}
+
+.card-face{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
 .card-front{
-  background:linear-gradient(145deg,#fff0f4 0%,#fce4ec 40%,#f8bbd0 100%);
-  border:2px solid rgba(232,120,138,.25);
-  box-shadow:0 24px 80px rgba(201,78,101,.2), inset 0 0 60px rgba(255,200,215,.2);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
+  margin-top: 0;
+  background: linear-gradient(145deg,#fff0f4 0%,#fce4ec 40%,#f8bbd0 100%);
+  border: 2px solid rgba(232,120,138,.25);
+  box-shadow: 0 24px 80px rgba(201,78,101,.2), inset 0 0 60px rgba(255,200,215,.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+}
+
+.card-back{
+  background: linear-gradient(145deg,#fff5f7 0%,#fde8ed 60%,#fce4ec 100%);
+  border: 2px solid rgba(232,120,138,.22);
+  box-shadow: 0 24px 80px rgba(201,78,101,.2);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2rem;
+  position: absolute;
+  inset: 0;
 }
 .card-front::before{
   content:'';position:absolute;inset:12px;border:1px solid rgba(232,120,138,.2);border-radius:12px;pointer-events:none;
 }
-.card-back{
-  background:linear-gradient(145deg,#fff5f7 0%,#fde8ed 60%,#fce4ec 100%);
-  border:2px solid rgba(232,120,138,.22);
-  box-shadow:0 24px 80px rgba(201,78,101,.2);
-  transform:rotateY(180deg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:2.5rem 2rem;position:relative;overflow:hidden;
-}
+
 .card-back::before{content:'';position:absolute;inset:12px;border:1px solid rgba(232,120,138,.18);border-radius:12px;pointer-events:none;}
 
 /* front decoration */
@@ -312,23 +361,32 @@ body{font-family:'Lato',sans-serif;font-weight:300;color:var(--dark);cursor:none
 
       <!-- BACK (message) -->
       <div class="card-face card-back">
-        <div class="cb-hearts" id="cbHearts"></div>
-        <div class="cb-ornament">✦</div>
-        <div class="cb-title">Dearest Mani,</div>
-        <div class="cb-divider"></div>
-        <p class="cb-text">
-          Today, the universe paused just to celebrate <em>you</em>.<br>
-          You carry grace in your eyes and warmth in your soul —
-          the kind that makes people feel at home just by being near you.
-        </p>
-        <p class="cb-text">
-          Every year you grow more radiant, more wise,<br>
-          more beautifully <em>you</em>.<br>
-          May this new chapter be the most wonderful one yet.
-        </p>
-        <div class="cb-divider"></div>
-        <div class="cb-sign">With all the love in the world 💕</div>
-      </div>
+  <div class="cb-hearts" id="cbHearts"></div>
+  <div class="cb-ornament">✦</div>
+  <div class="cb-title">My Dear Azhagi,</div>
+  <div class="cb-divider"></div>
+
+  <p class="cb-text">
+    You are the reason behind my smile…<br>
+    You are the beautiful feeling that lets me forget all my worries<br>
+    and stay at peace.
+  </p>
+
+  <p class="cb-text">
+    Just your presence is enough,<br>
+    to make my whole day feel happy…<br>
+    your smile is a special kind of magic in my life.
+  </p>
+
+  <p class="cb-text">
+    I hope this day becomes truly special for you…<br>
+    Enjoy it with full happiness, love, and endless smiles.
+  </p>
+  <div class="cb-sign">
+    Once again… with all my heart 💕 <br>
+    <strong>Happy Birthday Azhagi 🎂</strong>
+  </div>
+</div>
     </div>
   </div>
   <p class="card-prompt">Tap the card to open it ♡</p>
@@ -341,23 +399,40 @@ body{font-family:'Lato',sans-serif;font-weight:300;color:var(--dark);cursor:none
   <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--mauve);margin-bottom:.8rem;">Swipe the knife from top to bottom 🔪</p>
   <canvas id="cakeCanvas" width="460" height="420"></canvas>
   <p class="cake-hint" id="cakeHint">🔪 &nbsp; Drag top → bottom to cut</p>
-  <p id="cakeCutMsg">Happy Birthday Mani! 💕✨</p>
+  <p id="cakeCutMsg">Happy Birthday Faisal! 💕</p>
 </div>
 
 <!-- ════════ PAGE 7 – FINAL ════════ -->
 <div class="page" id="p7">
-  <div class="final-hearts">🌸 💕 🌹</div>
-  <h1 class="final-title" style="margin-top:.8rem;">كل عام وأنتِ بخير</h1>
-  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--mauve);margin-bottom:1.5rem;opacity:.7;">May every year be more beautiful than the last</p>
-  <p class="final-text">
-    You are a gift to everyone whose life you've touched.<br>
-    May Allah grant you the most beautiful year,<br>
-    filled with His mercy, love, and endless joy.
+  <div class="final-hearts">🌸 💕</div>
+
+  <h1 class="final-title" style="margin-top:.8rem;">Happiness, always yours ✨</h1>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--mauve);margin-bottom:1.5rem;opacity:.7;">
+    May every year be more beautiful than the last
   </p>
-  <p class="final-arabic">بَارَكَ اللهُ فِي عُمْرِكِ وَرَزَقَكِ كُلَّ خَيْر</p>
+
+  <p class="final-text">
+    This day doesn’t end here…<br>
+    Because every day I see you feels like a celebration.<br><br>
+
+    Just be the way you are…<br>
+    Never change yourself for anyone.<br><br>
+
+    Stay as the beautiful soul you are,<br>
+    because that’s what makes everything around you special.
+  </p>
+
+
   <p class="final-trans">"May Allah bless your life and grant you every good."</p>
+
   <div style="margin-top:2rem;font-size:2.5rem;animation:hb 1.8s ease-in-out infinite;">💕</div>
-  <p style="margin-top:1.2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:.85rem;color:rgba(212,112,138,.5);">Made with love & roses just for Mani 🌹</p>
+
+  <p style="margin-top:1.2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--rose);letter-spacing:.05em;">
+    ✨ Everything you dream of will come true ✨
+  </p>
+
+  <h1 class="final-title" style="margin-top:.8rem;">Once Again Happy Birthday Faisalya! 💕✨</h1>
 </div>
 
 <script>
